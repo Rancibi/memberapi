@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Members</title>
+</head>
+<body>
+<h1>Member List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Förnamn</th>
+        <th>Efternamn</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Födelsedatum</th>
+        <th>Adress</th>
+        <th>Ta bort</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.firstName}"></td>
+        <td th:text="${member.lastName}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.phone}"></td>
+        <td th:text="${member.dateOfBirth}"></td>
+        <td th:text="${member.address.street + ', ' + member.address.postalCode + ' ' + member.address.city}"></td>
+        <td>
+            <form th:action="@{/admin/deletememberbyid}" method="post">
+                <input type="hidden" name="id" th:value="${member.id}" />
+                <button type="submit">Ta bort</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
