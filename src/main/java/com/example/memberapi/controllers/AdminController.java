@@ -63,7 +63,7 @@ public class AdminController {
         return "redirect:/admin/deletemember";
     }
 
-    // Visa alla medlemmar i Thymeleaf (localhost:8081/admin/deletemember)
+    // Visa alla medlemmar i Thymeleaf (localhost:8080/admin/deletemember)
     @GetMapping("/deletemember")
     public String deleteMemberPage(Model model) {
         List<Member> members = memberService.getAllMembers();
